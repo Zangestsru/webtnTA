@@ -1414,11 +1414,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Infrastructure\\QuizPlatform.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Infrastructure\\QuizPlatform.Infrastructure.csproj",
       "projectName": "QuizPlatform.Infrastructure",
-      "projectPath": "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Infrastructure\\QuizPlatform.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Infrastructure\\QuizPlatform.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\tsmdo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1439,11 +1439,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Application\\QuizPlatform.Application.csproj": {
-              "projectPath": "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Application\\QuizPlatform.Application.csproj"
+            "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Application\\QuizPlatform.Application.csproj": {
+              "projectPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Application\\QuizPlatform.Application.csproj"
             },
-            "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj": {
-              "projectPath": "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj"
+            "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj": {
+              "projectPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj"
             }
           }
         }

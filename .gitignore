@@ -32,9 +32,16 @@ artifacts/
 # Environment and secrets
 appsettings.Development.json
 appsettings.Production.json
+appsettings.*.json
+!appsettings.json
 *.local.json
 .env
 .env.*
+
+# Certificates
+*.pfx
+*.p12
+*.pem
 
 # OS
 .DS_Store
@@ -47,7 +54,3 @@ logs/
 # Test results
 TestResults/
 coverage/
-
-# Tools build output
-tools/**/bin/
-tools/**/obj/

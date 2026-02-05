@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LpqMTr8w+xU=",
+  "dgSpecHash": "NgWxuF7lyMk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj",
+  "projectFilePath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

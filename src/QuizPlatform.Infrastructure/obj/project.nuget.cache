@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A+Mb9v9pDQk=",
+  "dgSpecHash": "aW6LgPUfUes=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tsmdo\\Desktop\\webtnTA\\be\\src\\QuizPlatform.Infrastructure\\QuizPlatform.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Infrastructure\\QuizPlatform.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tsmdo\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\tsmdo\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
