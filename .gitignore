@@ -1,0 +1,53 @@
+# Build outputs
+bin/
+obj/
+out/
+publish/
+
+# IDE
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# NuGet packages
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio
+.vs/
+*.rsuser
+*.sln.iml
+
+# Rider
+*.sln.iml
+.idea/
+
+# Environment and secrets
+appsettings.Development.json
+appsettings.Production.json
+*.local.json
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test results
+TestResults/
+coverage/
+
+# Tools build output
+tools/**/bin/
+tools/**/obj/
