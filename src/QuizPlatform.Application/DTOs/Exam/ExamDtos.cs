@@ -106,3 +106,21 @@ public class QuestionResultDto
     public decimal Score { get; set; }
     public string? Explanation { get; set; }
 }
+
+/// <summary>
+/// DTO for submission details with full question information.
+/// </summary>
+public class SubmissionDto
+{
+    public string Id { get; set; } = null!;
+    public string UserId { get; set; } = null!;
+    public string Username { get; set; } = null!;
+    public string? UserEmail { get; set; }
+    public string ExamId { get; set; } = null!;
+    public string ExamTitle { get; set; } = null!;
+    public decimal TotalScore { get; set; }
+    public decimal MaxScore { get; set; }
+    public List<QuestionResultDto> Questions { get; set; } = new();
+    public DateTime SubmittedAt { get; set; }
+    public int TimeTaken { get; set; }
+}

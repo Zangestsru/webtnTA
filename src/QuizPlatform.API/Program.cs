@@ -35,6 +35,7 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<IExamHistoryService, ExamHistoryService>();
 
 // Email Service
 builder.Services.AddScoped<IEmailService, EmailService>();
