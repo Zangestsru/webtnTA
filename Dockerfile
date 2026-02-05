@@ -20,19 +20,14 @@ RUN dotnet publish -c Release -o /app/publish --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 
-# Create non-root user for security
-RUN adduser --disabled-password --gecos '' appuser
-
 COPY --from=build /app/publish .
 
-# Change ownership and switch to non-root user
-RUN chown -R appuser:appuser /app
-USER appuser
-
-# Set production environment
+# Railway injects PORT environment variable
+# Default to 8080 if not set
 ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_HTTP_PORTS=8080
 
 EXPOSE 8080
 
-# Use shell form to allow PORT environment variable substitution at runtime
-CMD ASPNETCORE_URLS=http://+:${PORT:-8080} dotnet QuizPlatform.API.dll
+# Start the application
+ENTRYPOINT ["dotnet", "QuizPlatform.API.dll"]

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuizPlatform.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e765edd11f932d846fe3434f67f78c94a8572555")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f3fdc2e861060717b1238a4c7f0b6b4e505436e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuizPlatform.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuizPlatform.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
