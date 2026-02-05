@@ -1,3 +1,5 @@
+using QuizPlatform.Domain.Enums;
+
 namespace QuizPlatform.Application.DTOs.Auth;
 
 /// <summary>
@@ -18,4 +20,6 @@ public class UserDto
     public string Username { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string Role { get; set; } = null!;
+    public string? Gender { get; set; }
+    public DateTime? DateOfBirth { get; set; }
 }

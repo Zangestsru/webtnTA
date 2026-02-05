@@ -9,6 +9,7 @@ using QuizPlatform.Domain.Entities;
 using QuizPlatform.Domain.Enums;
 using QuizPlatform.Infrastructure.Data;
 using QuizPlatform.Infrastructure.Repositories;
+using QuizPlatform.Infrastructure.Services;
 using QuizPlatform.Infrastructure.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDb"));
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("Jwt"));
 builder.Services.Configure<GroqOptions>(builder.Configuration.GetSection("Groq"));
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
 
 // MongoDB Context
 builder.Services.AddSingleton<MongoDbContext>();
@@ -33,6 +35,9 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+
+// Email Service
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Document Import Services
 builder.Services.AddScoped<IDocumentParserService, DocumentParserService>();
@@ -58,8 +63,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// Controllers
-builder.Services.AddControllers();
+// Controllers with JSON options
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+    });
 
 // Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
@@ -133,11 +143,9 @@ else
     });
 }
 
-// Don't force HTTPS redirect - Railway handles SSL termination
-if (app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
+// Don't use HTTPS redirection in development (use HTTP profile)
+// In production, Railway/Azure handles SSL termination
+// app.UseHttpsRedirection();
 
 app.UseCors("AllowFrontend");
 app.UseAuthentication();

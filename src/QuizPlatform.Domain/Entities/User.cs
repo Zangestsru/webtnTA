@@ -14,4 +14,12 @@ public class User : BaseEntity
     public UserRole Role { get; set; } = UserRole.User;
     public bool IsActive { get; set; } = true;
     public string? GoogleId { get; set; }
+    
+    // Profile fields
+    public Gender? Gender { get; set; }
+    public DateTime? DateOfBirth { get; set; }
+    
+    // Password reset OTP fields
+    public string? PasswordResetOtp { get; set; }
+    public DateTime? OtpExpiryTime { get; set; }
 }
