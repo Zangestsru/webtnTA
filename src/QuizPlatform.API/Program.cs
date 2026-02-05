@@ -108,8 +108,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Health check endpoint for Railway
+// Health check endpoint for Railway - MUST be first so it's always available
 app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }));
+
+// Log startup info
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+logger.LogInformation("Starting application on port {Port}", port);
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
@@ -139,8 +144,16 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-// Seed admin user on startup
-await SeedAdminUserAsync(app.Services);
+// Seed admin user on startup (non-blocking)
+try
+{
+    await SeedAdminUserAsync(app.Services);
+}
+catch (Exception ex)
+{
+    var seedLogger = app.Services.GetRequiredService<ILogger<Program>>();
+    seedLogger.LogWarning(ex, "Failed to seed admin user during startup. Will retry on first request if needed.");
+}
 
 app.Run();
 

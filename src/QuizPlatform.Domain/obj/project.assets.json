@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\webtnTA\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj",
       "projectName": "QuizPlatform.Domain",
-      "projectPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj",
+      "projectPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\webtnTA\\src\\QuizPlatform.Domain\\QuizPlatform.Domain.csproj",
       "packagesPath": "C:\\Users\\tsmdo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\backend\\src\\QuizPlatform.Domain\\obj\\",
+      "outputPath": "C:\\Users\\tsmdo\\Desktop\\QuizPlatform\\webtnTA\\src\\QuizPlatform.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

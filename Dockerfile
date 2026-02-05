@@ -29,10 +29,10 @@ COPY --from=build /app/publish .
 RUN chown -R appuser:appuser /app
 USER appuser
 
-# Railway uses PORT environment variable
-ENV ASPNETCORE_URLS=http://+:${PORT:-8080}
+# Set production environment
 ENV ASPNETCORE_ENVIRONMENT=Production
 
 EXPOSE 8080
 
-ENTRYPOINT ["dotnet", "QuizPlatform.API.dll"]
+# Use shell form to allow PORT environment variable substitution at runtime
+CMD ASPNETCORE_URLS=http://+:${PORT:-8080} dotnet QuizPlatform.API.dll
