@@ -10,7 +10,7 @@ namespace QuizPlatform.API.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin,Teacher")]
 public class DocumentImportController : ControllerBase
 {
     private readonly IDocumentParserService _documentParser;

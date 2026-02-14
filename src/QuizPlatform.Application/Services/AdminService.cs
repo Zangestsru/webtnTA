@@ -217,6 +217,17 @@ public class AdminService : IAdminService
         return MapToAdminUserDto(user);
     }
 
+    public async Task DeleteUserAsync(string id)
+    {
+        var user = await _userRepository.GetByIdAsync(id);
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found");
+        }
+
+        await _userRepository.DeleteAsync(id);
+    }
+
     #endregion
 
     #region Mapping Methods

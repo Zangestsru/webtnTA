@@ -38,7 +38,15 @@ public class GroqAiService : IAiQuestionService
     /// </summary>
     public async Task<IEnumerable<QuestionRequest>> ExtractQuestionsAsync(string documentText)
     {
-        var prompt = BuildPrompt(documentText);
+        return await GenerateQuestionsAsync(documentText, "Extract all questions from the provided text.");
+    }
+
+    /// <summary>
+    /// Generates quiz questions based on document context and/or user prompt.
+    /// </summary>
+    public async Task<IEnumerable<QuestionRequest>> GenerateQuestionsAsync(string? documentText, string? userPrompt)
+    {
+        var prompt = BuildFlexiblePrompt(documentText, userPrompt);
 
         var request = new
         {
@@ -83,32 +91,51 @@ IMPORTANT:
 Return ONLY a JSON array with no additional text.";
     }
 
-    private string BuildPrompt(string documentText)
+    private string BuildFlexiblePrompt(string? documentText, string? userPrompt)
     {
-        return $@"Extract all multiple-choice questions from this document and return them as a JSON array.
+        var requestParts = new List<string>();
 
-Each question object must have this exact structure:
-{{
-    ""content"": ""The question text"",
+        requestParts.Add(@"Your task is to generate multiple-choice questions based on the provided context and instructions.
+Return ONLY a JSON array.
+
+Each question object must clearly identify the CORRECT answer.
+Structure:
+[
+  {
+    ""content"": ""Question text"",
     ""type"": ""Single"" or ""Multiple"",
     ""options"": [
-        {{ ""key"": ""A"", ""content"": ""Option A text"" }},
-        {{ ""key"": ""B"", ""content"": ""Option B text"" }},
-        {{ ""key"": ""C"", ""content"": ""Option C text"" }},
-        {{ ""key"": ""D"", ""content"": ""Option D text"" }}
+        { ""key"": ""A"", ""content"": ""Option A"" },
+        { ""key"": ""B"", ""content"": ""Option B"" }
     ],
     ""correctAnswers"": [""A""],
-    ""explanation"": ""Why this answer is correct"",
-    ""category"": ""Topic category"",
-    ""difficulty"": ""Easy"", ""Medium"", or ""Hard""
-}}
+    ""explanation"": ""Reasoning"",
+    ""category"": ""Topic"",
+    ""difficulty"": ""Easy/Medium/Hard""
+  }
+]");
 
-Document content:
----
-{documentText}
----
+        if (!string.IsNullOrWhiteSpace(documentText))
+        {
+            requestParts.Add($@"### DOCUMENT CONTEXT ###
+The following text is the source material. Use this content to generate questions and identify correct answers.
 
-Return ONLY the JSON array, no other text:";
+{documentText}");
+        }
+
+        if (!string.IsNullOrWhiteSpace(userPrompt))
+        {
+            requestParts.Add($@"### USER INSTRUCTION ###
+{userPrompt}");
+        }
+        else
+        {
+            requestParts.Add("### INSTRUCTION ###\nExtract all questions found in the document context.");
+        }
+
+        requestParts.Add("Return ONLY the JSON array:");
+
+        return string.Join("\n\n", requestParts);
     }
 
     private IEnumerable<QuestionRequest> ParseQuestionsFromJson(string jsonContent)

@@ -7,7 +7,7 @@ namespace QuizPlatform.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin,Teacher")]
 public class AdminController : ControllerBase
 {
     private readonly IAdminService _adminService;
@@ -154,6 +154,7 @@ public class AdminController : ControllerBase
     /// <summary>
     /// Get all users (admin).
     /// </summary>
+    [Authorize(Roles = "Admin")]
     [HttpGet("users")]
     public async Task<ActionResult<IEnumerable<AdminUserDto>>> GetAllUsers()
     {
@@ -164,6 +165,7 @@ public class AdminController : ControllerBase
     /// <summary>
     /// Update user role (admin).
     /// </summary>
+    [Authorize(Roles = "Admin")]
     [HttpPut("users/{id}/role")]
     public async Task<ActionResult<AdminUserDto>> UpdateUserRole(string id, [FromBody] UpdateRoleRequest request)
     {
@@ -181,6 +183,7 @@ public class AdminController : ControllerBase
     /// <summary>
     /// Toggle user active status (admin).
     /// </summary>
+    [Authorize(Roles = "Admin")]
     [HttpPut("users/{id}/toggle-active")]
     public async Task<ActionResult<AdminUserDto>> ToggleUserActive(string id)
     {
@@ -188,6 +191,24 @@ public class AdminController : ControllerBase
         {
             var user = await _adminService.ToggleUserActiveAsync(id);
             return Ok(user);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Delete a user (admin).
+    /// </summary>
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("users/{id}")]
+    public async Task<ActionResult> DeleteUser(string id)
+    {
+        try
+        {
+            await _adminService.DeleteUserAsync(id);
+            return NoContent();
         }
         catch (InvalidOperationException ex)
         {

@@ -25,4 +25,5 @@ public interface IAdminService
     Task<IEnumerable<AdminUserDto>> GetAllUsersAsync();
     Task<AdminUserDto> UpdateUserRoleAsync(string id, UpdateRoleRequest request);
     Task<AdminUserDto> ToggleUserActiveAsync(string id);
+    Task DeleteUserAsync(string id);
 }

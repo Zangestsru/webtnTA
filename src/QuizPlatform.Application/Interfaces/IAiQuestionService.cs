@@ -13,4 +13,12 @@ public interface IAiQuestionService
     /// <param name="documentText">The text extracted from a document.</param>
     /// <returns>A list of extracted questions ready to be saved.</returns>
     Task<IEnumerable<QuestionRequest>> ExtractQuestionsAsync(string documentText);
+
+    /// <summary>
+    /// Generates quiz questions based on document context and/or user prompt.
+    /// </summary>
+    /// <param name="documentText">Optional text context from a file.</param>
+    /// <param name="userPrompt">Optional user instructions (e.g., "Create 5 questions").</param>
+    /// <returns>A list of generated questions.</returns>
+    Task<IEnumerable<QuestionRequest>> GenerateQuestionsAsync(string? documentText, string? userPrompt);
 }
